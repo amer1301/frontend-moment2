@@ -151,6 +151,20 @@ h2 {
     opacity: 70%;
   }
 
+  #workExperienceList {
+    font-size: 1.2em;
+    line-height: 2em;
+  }
+
+  ul#workExperienceList {
+    list-style: none;
+  }
+
+  ul#workExperienceList li::before {
+    content: "★";
+    color: rgba(0, 232, 255, 1); 
+  }
+
   #addWorkExperienceForm {
     margin-top: 5em;
     display: flex;
@@ -183,6 +197,7 @@ h2 {
 
   button {
     margin-top: 3em;
+    margin-bottom: 2em;
     padding: 1em 0;
     width: 10em;
     cursor: pointer;

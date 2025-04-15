@@ -1,5 +1,15 @@
 const apiUrl = 'http://localhost:3000/api/workexperience';
 
+// Om vi är på index.html, hämta och visa alla arbetserfarenheter
+document.addEventListener('DOMContentLoaded', function() {
+    // Kontrollera om elementet finns på sidan innan vi försöker ändra det
+    const list = document.getElementById('workExperienceList');
+    
+    if (list) {
+        fetchWorkExperience(); // Anropa funktionen om elementet finns
+    }
+});
+
 // Hämta alla arbetserfarenheter
 function fetchWorkExperience() {
     fetch(apiUrl)
@@ -18,14 +28,29 @@ function fetchWorkExperience() {
             } else {
                 data.forEach(item => {
                     const li = document.createElement('li');
+                
+                    const formattedStartDate = new Date(item.startdate).toLocaleDateString('sv-SE');
+
+                    let formattedEndDate = 'Pågående';
+                    if (item.enddate) {
+                        const parsedEndDate = new Date(item.enddate);
+                        if (!isNaN(parsedEndDate)) {
+                            formattedEndDate = parsedEndDate.toLocaleDateString('sv-SE');
+                        }
+                    }
+                
                     li.innerHTML = `
                         <strong>${item.companyname}</strong> (${item.jobtitle})<br>
-                        Plats: ${item.location} | Start: ${item.startdate} | Slut: ${item.enddate || 'Pågående'}<br>
-                        Beskrivning: ${item.description}<br>
+                        <strong>Plats: </strong>${item.location}<br> 
+                        <strong>Start: </strong>${formattedStartDate}<br>
+                        <strong>Slut: </strong>${formattedEndDate}<br>
+                        <strong>Beskrivning: </strong>${item.description}<br>
                         <button onclick="deleteWorkExperience(${item.id})">Ta bort</button>
                     `;
                     list.appendChild(li);
                 });
+                
+                
             }
         })
         .catch(error => {
@@ -34,42 +59,6 @@ function fetchWorkExperience() {
             list.innerHTML = '<li>Det gick inte att hämta arbetserfarenheter.</li>';
         });
 }
-
-// Lägg till en arbetserfarenhet
-document.getElementById('addWorkExperienceForm')?.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const data = {
-        companyname: formData.get('companyname'),
-        jobtitle: formData.get('jobtitle'),
-        location: formData.get('location'),
-        startdate: formData.get('startdate'),
-        enddate: formData.get('enddate'),
-        description: formData.get('description')
-    };
-
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(result => {
-        console.log(result);
-        alert('Arbetserfarenhet tillagd!');
-        window.location.href = 'index.html'; // Omdirigera tillbaka till listan
-    })
-    .catch(error => {
-        console.error('Error posting data:', error);
-        alert('Det gick inte att lägga till arbetserfarenheten.');
-    });
-});
 
 // Ta bort en arbetserfarenhet
 function deleteWorkExperience(id) {
@@ -95,7 +84,3 @@ function deleteWorkExperience(id) {
     }
 }
 
-// Om vi är på index.html, hämta och visa alla arbetserfarenheter
-if (document.getElementById('workExperienceList')) {
-    fetchWorkExperience();
-}
