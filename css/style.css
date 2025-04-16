@@ -154,6 +154,10 @@ h2 {
   #workExperienceList {
     font-size: 1.2em;
     line-height: 2em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
   }
 
   ul#workExperienceList {
@@ -162,7 +166,7 @@ h2 {
 
   ul#workExperienceList li::before {
     content: "★";
-    color: rgba(0, 232, 255, 1); 
+    color: rgba(89, 45, 113, 1); 
   }
 
   #addWorkExperienceForm {
@@ -210,9 +214,39 @@ h2 {
     transform: scale(1.1);
   }
 
-  @media (max-width: 375px) {
+  p {
+    font-size: 1em;
+    line-height: 2em;
+    margin: 0 auto;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 800px) {
+    .footer {
+    gap: 10em;
+    }
+  }
+
+  @media (max-width: 645px) {
+
+    .footer {
+      gap: 5em;
+      }
+
+      .footer-left p {
+        font-size: 0.8em;
+      }
+  
+      .footer-right p {
+        font-size: 0.8em;
+      }
+
     .menu-toggle {
         display: flex;
+        margin-top: 3em;
+        margin-bottom: 2em;
+        padding: 0;
+        width: 3em;
       }
       
       .menu-toggle .bars {
@@ -269,4 +303,68 @@ h2 {
       #nav-menu.active {
         display: flex;
       }
+
+      #addWorkExperienceForm {
+        margin-top: 3em;
+        margin-left: 1.5em;
+      }
+
+      #companyname,
+  #jobtitle,
+  #location {
+    width: 25em;
+  }
+
+  #description {
+    width: 25em;
+  }
+
+  .footer-right {
+    white-space: normal;
+  }
+  }
+
+  @media (max-width: 415px) {
+    ul#workExperienceList li::before {
+      content: "★";
+      color: rgba(0, 232, 255, 1); 
+    }
+
+    button {
+      margin-top: 2em;
+      padding: 0.5em 0;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    #workExperienceList {
+      font-size: 1em;
+    }
+
+    .footer {
+    gap: 2em;
+    }
+
+    #addWorkExperienceForm {
+      margin-top: 2em;
+      margin-left: 0.3em;
+      font-size: 0.8em;
+    }
+
+    #companyname,
+#jobtitle,
+#location {
+  width: 20em;
+}
+
+#description {
+  width: 20em;
+  padding-bottom: 7em;
+}
   }
