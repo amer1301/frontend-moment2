@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Great+Vibes&family=Karla:ital,wght@0,200..800;1,200..800&family=Lato&family=MonteCarlo&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<script src="js/main.js"></script>
+<script src="js/menu.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="header-nav">
+            <button class="menu-toggle" id="menu-toggle">
+              <span class="bars">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </span>
+              <span class="close" style="display: none;">
+                <span class="close-icon">X</span>
+              </span>
+            </button>
+          </nav>
+          <h1>Curriculum vitae</h1>
+          <nav class="menu-nav">
+            <ul id="nav-menu">
+            <li><a href="index.html">Startsida</a></li>
+            <li><a href="add.html">Lägg till arbetserfarenhet</a></li>
+            <li><a href="about.html">Information om hemsidan</a></li>
+        </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Information om webbplatsen</h2>
+        <p>Denna webbplats är skapad för att hantera arbetserfarenheter i ett CV-format.
+          Användaren kan lägga till, läsa, uppdatera och ta bort information om sina tidigare
+          arbeten med så kallad CRUD-funktionalitet (Create, Read, Update, Delete).
+        </p><br>
+<p>Webbplatsen är uppdelad i två delar, en backend och en frontend. Frontend är byggd med hjälp av
+  HTML, JavaScript och CSS. Backend (webbtjänsten) är en REST API byggd i Node.js med express och MySQL som hanterar
+  databasfrågor och kommunicerar med frontend via HTTP. Servern exponerar flera API-endpoints via
+   /api/workexperience/ vilket möjliggör kommunikationen mellan frontend-delen och backend för att kunna 
+   uppdatera informationen dynamiskt. CORS användes för att tillåta frontend-appen (som körs från en annan 
+  domän) att göra anrop till backend-servern. Frontend-delen publicerades via Netlify och backend vid Render.</p><br>
+
+   <p>Denna uppgift har klargjort hur frontend och backend fungerar tillsammans och jag vart även glad över att 
+    lära mig hur CORS fungerar med tanke på att detta i tidigare moment förstörde de initiala idéer jag hade för uppgiften.
+    Uppgiften gav mig en djupare förståelse för hur frontend och backend samverkar via API:er och hittills skulle jag nog säga
+     att det varit den roligaste kursen.</p>
+        <footer>
+            <div class="bar-footer"></div>
+            <section class="footer">
+            <div class="footer-left">
+            <p>Amanda Persdotter</p>
+            <p>amer1301@student.miun.se</p>
+        </div>
+        <div class="footer-right">
+            <p>DT207G Datateknik GR (B)</p>
+            <p>Backend-baserad webbutveckling</p>
+        </div>
+        </footer>
+    </main>
+</body>
+</html>
