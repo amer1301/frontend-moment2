@@ -221,6 +221,39 @@ h2 {
     max-width: 60ch;
   }
 
+  #feedback {
+    margin-top: 1em;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+#feedback.success {
+    color: rgb(0, 0, 0);
+}
+
+#feedback.error {
+    color: rgb(255, 0, 0);
+}
+
+#feedback.confirm {
+  color: #000000;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#confirmDelete {
+  align-items: center;
+  margin: 2em auto;
+}
+
+#cancelDelete {
+  align-items: center;
+  margin: 0 auto;
+}
+
   @media (max-width: 800px) {
     .footer {
     gap: 10em;
